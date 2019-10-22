@@ -2,10 +2,10 @@ version: '3'
 services:
   node:
     image: node:latest
-    # volume:
-    #   - /home/tnguye20/docker/volume/ansible/:/ansible
-    #   - /home/tnguye20/docker/volume/scripts/:/scripts
-    # entrypoint: /home/tnguye20/docker/entry/ansible-entrypoint.sh
+    volume:
+      - /home/tnguye20/docker/volume/node/:/node
+      - /home/tnguye20/docker/volume/scripts/:/scripts
+    entrypoint: /home/tnguye20/docker/entry/node-entrypoint.sh
     ports:
       - "8080:8080"
       - "80:80"
@@ -14,5 +14,20 @@ services:
       - "8026:8026"
     extra_hosts:
       - self:127.0.0.1
+    tty: true
+    restart: "no"
+
+  mongodb:
+    image: mongo:latest
+    volume:
+      - /home/tnguye20/docker/volume/mongodb/:/mongodb
+      - /home/tnguye20/docker/volume/scripts/:/scripts
+    entrypoint: /home/tnguye20/docker/entry/mongodb-entrypoint.sh
+    ports:
+      - "27017:27017"
+    environment:
+      - placeholder=/opt
+    labels:
+      - "db-name:MyMongo"
     tty: true
     restart: "no"
