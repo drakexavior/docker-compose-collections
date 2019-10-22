@@ -12,3 +12,7 @@ fi
 sudo usermod -aG docker $USER
 sudo systemctl stop docker
 sudo systemctl start docker
+
+# Start the docker login process
+docker login
+docker run hello-world
