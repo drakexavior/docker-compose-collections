@@ -1,12 +1,18 @@
 version: '3'
 services:
   ansible:
-    image: ansible
-    volume:
-      - /home/tnguye20/docker/volume/ansible/:/ansible
-      - /home/tnguye20/docker/volume/scripts/:/scripts
+    image: node:latest
+     volume:
+       - /home/tnguye20/docker/volume/node/:/ansible
+       - /home/tnguye20/docker/volume/scripts/:/scripts
     entrypoint: /home/tnguye20/docker/entry/ansible-entrypoint.sh
-    extra-hosts:
+    ports:
+      - "8080:8080"
+      - "80:80"
+      - "22:22"
+      - "443:443"
+      - "8026:8026"
+    extra_hosts:
       - self:127.0.0.1
     tty: true
     restart: "no"
