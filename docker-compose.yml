@@ -1,11 +1,11 @@
 version: '3'
 services:
-  ansible:
+  node:
     image: node:latest
-     volume:
-       - /home/tnguye20/docker/volume/node/:/ansible
-       - /home/tnguye20/docker/volume/scripts/:/scripts
-    entrypoint: /home/tnguye20/docker/entry/ansible-entrypoint.sh
+    # volume:
+    #   - /home/tnguye20/docker/volume/ansible/:/ansible
+    #   - /home/tnguye20/docker/volume/scripts/:/scripts
+    # entrypoint: /home/tnguye20/docker/entry/ansible-entrypoint.sh
     ports:
       - "8080:8080"
       - "80:80"
